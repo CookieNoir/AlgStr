@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class KnuthMorrisPratt : Algorithm
 {
-    private const char uniqueSymbol = '\u25A0';
+    private const char uniqueSymbol = '|';
 
     private int[] PrefixFunction(string text)
     {
