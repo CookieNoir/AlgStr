@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Naive : Algorithm
 {
-    public override void GetPatternEntries(string text, string pattern, List<int> result)
+    public override void GetPatternEntries(string text, string pattern, List<int> result, ref int comparisons)
     {
+        comparisons = 0;
         int textLength = text.Length;
         int patternLength = pattern.Length;
         for (int i = 0; i < textLength - patternLength + 1; ++i)
@@ -13,6 +12,7 @@ public class Naive : Algorithm
             bool match = true;
             for (int j = 0; j < patternLength; ++j)
             {
+                comparisons++;
                 if (text[i + j] != pattern[j])
                 {
                     match = false;

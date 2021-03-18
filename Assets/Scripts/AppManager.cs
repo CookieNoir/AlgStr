@@ -8,10 +8,12 @@ public class AppManager : MonoBehaviour
     public Text inputText;
     public Text patternText;
     public Text outputText;
+    public Text comparisonsText;
 
     public List<Algorithm> algorithms;
     public List<Button> buttons;
 
+    private int comparisons = 0;
     private int activeAlgorithm = 0;
     private List<int> result;
 
@@ -41,7 +43,7 @@ public class AppManager : MonoBehaviour
             string pattern = patternText.text.ToUpperInvariant();
 
             result.Clear();
-            algorithms[activeAlgorithm].GetPatternEntries(text, pattern, result);
+            algorithms[activeAlgorithm].GetPatternEntries(text, pattern, result, ref comparisons);
 
             if (result.Count == 0)
             {
@@ -56,5 +58,6 @@ public class AppManager : MonoBehaviour
             }
         }
         outputText.text = output;
+        comparisonsText.text = "Число сравнений: " + comparisons;
     }
 }

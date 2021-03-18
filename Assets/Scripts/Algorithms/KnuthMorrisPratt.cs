@@ -1,41 +1,62 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class KnuthMorrisPratt : Algorithm
 {
-    private const char uniqueSymbol = '|';
-
-    private int[] PrefixFunction(string text)
+    public override void GetPatternEntries(string text, string pattern, List<int> result, ref int comparisons)
     {
-        int textLength = text.Length;
-        int[] p = new int[textLength];
-        p[0] = 0;
-        for (int i = 1; i < textLength; ++i)
-        {
-            int k = p[i - 1];
-            while (k > 0 && text[i] != text[k])
-            {
-                k = p[k - 1];
-            }
-            if (text[i] == text[k])
-            {
-                k++;
-            }
-            p[i] = k;
-        }
-        return p;
-    }
+        comparisons = 0;
 
-    public override void GetPatternEntries(string text, string pattern, List<int> result)
-    {
         int textLength = text.Length;
         int patternLength = pattern.Length;
-        int patternLengthDual = patternLength + patternLength;
-        int[] p = PrefixFunction(pattern + uniqueSymbol + text);
-        for (int i = 0; i < textLength - patternLength + 1; ++i)
+        int[] p = new int[patternLength];
+        p[0] = 0;
+        int i = 1, j = 0;
+
+        while (i < patternLength)
         {
-            if (p[patternLengthDual + i] == patternLength)
+            comparisons++;
+            if (pattern[j] == pattern[i])
             {
-                result.Add(i);
+                p[i] = j + 1;
+                i++;
+                j++;
+            }
+            else
+            {
+                if (j == 0)
+                {
+                    p[i] = 0;
+                    i++;
+                }
+                else
+                {
+                    j = p[j - 1];
+                }
+            }
+        }
+        i = 0; j = 0;
+        while (i <= textLength - patternLength + j)
+        {
+            comparisons++;
+            while (j < patternLength && text[i] == pattern[j])
+            {
+                i++;
+                j++;
+                comparisons++;
+            }
+            if (j == patternLength)
+            {
+                result.Add(i - patternLength);
+                comparisons--;
+            }
+            if (j > 0)
+            {
+                j = p[j - 1];
+            }
+            else
+            {
+                i++;
             }
         }
     }
