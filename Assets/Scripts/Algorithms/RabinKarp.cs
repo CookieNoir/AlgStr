@@ -38,7 +38,7 @@ public class RabinKarp : Algorithm
                 }
                 if (match) result.Add(i);
             }
-            hashText = (basement * (hashText - multiplier * text[i]) + text[i + patternLength] + divider) % divider;
+            hashText = (basement * (hashText - multiplier * text[i]) + text[i + patternLength] + divider) % divider; // Возможно тут ошибка!
         }
         if (hashText == hashPattern)
         {
