@@ -20,7 +20,7 @@ public class BaezaYatesGonnet : Algorithm
         }
     }
 
-    public override void GetPatternEntries(string text, string pattern, List<int> result, ref int comparisons)
+    public override void GetPatternEntries(string text, string pattern, List<string> result, ref int comparisons)
     {
         comparisons = 0;
         int textLength = text.Length;
@@ -63,7 +63,7 @@ public class BaezaYatesGonnet : Algorithm
             }
             if (!s[patternLength - 1])
             {
-                result.Add(i - patternLength + 1);
+                result.Add((i - patternLength + 1).ToString());
             }
         }
     }

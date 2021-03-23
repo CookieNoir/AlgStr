@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class KnuthMorrisPratt : Algorithm
 {
-    public override void GetPatternEntries(string text, string pattern, List<int> result, ref int comparisons)
+    public override void GetPatternEntries(string text, string pattern, List<string> result, ref int comparisons)
     {
         comparisons = 0;
 
@@ -47,7 +47,7 @@ public class KnuthMorrisPratt : Algorithm
             }
             if (j == patternLength)
             {
-                result.Add(i - patternLength);
+                result.Add((i - patternLength).ToString());
                 comparisons--;
             }
             if (j > 0)

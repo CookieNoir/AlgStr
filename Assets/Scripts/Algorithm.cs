@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Algorithm : MonoBehaviour
 {
-    public virtual void GetPatternEntries(string text, string pattern, List<int> result, ref int comparisons)
+    public virtual void GetPatternEntries(string text, string pattern, List<string> result, ref int comparisons)
     {
     }
 }

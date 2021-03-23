@@ -5,7 +5,7 @@ public class RabinKarp : Algorithm
     private const int basement = 59;
     private const int divider = 433494437;
 
-    public override void GetPatternEntries(string text, string pattern, List<int> result, ref int comparisons)
+    public override void GetPatternEntries(string text, string pattern, List<string> result, ref int comparisons)
     {
         comparisons = 0;
         int textLength = text.Length;
@@ -36,7 +36,7 @@ public class RabinKarp : Algorithm
                         break;
                     }
                 }
-                if (match) result.Add(i);
+                if (match) result.Add(i.ToString());
             }
             hashText = (basement * (hashText - multiplier * text[i]) + text[i + patternLength] + divider) % divider; // Возможно тут ошибка!
         }
@@ -52,7 +52,7 @@ public class RabinKarp : Algorithm
                     break;
                 }
             }
-            if (match) result.Add(i);
+            if (match) result.Add(i.ToString());
         }
     }
 }

@@ -38,7 +38,7 @@ public class BoyerMoore : Algorithm
     }
     */
 
-    public override void GetPatternEntries(string text, string pattern, List<int> result, ref int comparisons)
+    public override void GetPatternEntries(string text, string pattern, List<string> result, ref int comparisons)
     {
         comparisons = 0;
 
@@ -112,7 +112,7 @@ public class BoyerMoore : Algorithm
             }
             if (j < 0)
             {
-                result.Add(i);
+                result.Add(i.ToString());
                 i += goodSuffixes[0];
                 comparisons--;
             }

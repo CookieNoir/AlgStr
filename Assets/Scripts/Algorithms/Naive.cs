@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class Naive : Algorithm
 {
-    public override void GetPatternEntries(string text, string pattern, List<int> result, ref int comparisons)
+    public override void GetPatternEntries(string text, string pattern, List<string> result, ref int comparisons)
     {
         comparisons = 0;
         int textLength = text.Length;
@@ -19,7 +19,7 @@ public class Naive : Algorithm
                     break;
                 }
             }
-            if (match) result.Add(i);
+            if (match) result.Add(i.ToString());
         }
     }
 }

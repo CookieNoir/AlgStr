@@ -15,11 +15,11 @@ public class AppManager : MonoBehaviour
 
     private int comparisons = 0;
     private int activeAlgorithm = 0;
-    private List<int> result;
+    private List<string> result;
 
     private void Awake()
     {
-        result = new List<int>();
+        result = new List<string>();
         SetActiveAlgorithm(0);
     }
 
@@ -51,9 +51,9 @@ public class AppManager : MonoBehaviour
             }
             else
             {
-                foreach (int i in result)
+                foreach (string i in result)
                 {
-                    output += i.ToString() + "  ";
+                    output += i + "  ";
                 }
             }
         }
